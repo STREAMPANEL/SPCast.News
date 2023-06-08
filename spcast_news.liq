@@ -39,11 +39,20 @@ settings.encoder.metadata.export.set(["artist", "title", "album", "genre", "date
 # Clock: https://www.liquidsoap.info/doc-dev/settings.html#streaming-clock-settings
 settings.root.max_latency.set(60.)
 
+# See: https://liquidsoap.readthedocs.io/en/latest/content/cookbook.html
 # local file
 news = single("/home/spcast/SPCast/news/files/news.mp3")
 
-# fallback function
-radio = fallback(track_sensitive=false,[news])
+# This function creates a fading transition between two sources, a and b. 
+#def fading_transition(a,b)
+#	sequence([fade.out(a.source),fade.in(b.source)])
+#end
+
+# This line creates a crossfading transition between the news source and the fading_transition function. 
+#news_fade = cross(fading_transition, news)
+
+# Create a source that plays the file once
+radio = once(news)
 
 # Include Radiodetails
 %include "news_radiodata.liq"
