@@ -50,8 +50,5 @@ news = single("/home/spcast/SPCast/news/files/news.mp3")
 # Create a source that plays the file once
 radio = once(news)
 
-# Include Radiodetails
-%include "news_radiodata.liq"
-
-# Include Credentials
-%include "news_credentials.liq"
+# Include Data
+%include "news_modus.liq"
