@@ -4,7 +4,7 @@
 pkill -f sitmjlxvvpfimx
 
 # Remove Logfiles
-rm -f /home/spcast/SPCast/news/logs/*.log*
+find /home/spcast/SPCast/news/logs/ -name "*.log*" -type f -mtime +3 -exec rm -f {} \;
 
 # Set permissions
 chmod +x spcast_news.liq
